@@ -86,14 +86,24 @@ public class Drivetrain extends Subsystem implements PIDOutput{
 		
 		rightPID = new PIDController(0.015, 0.0, 0.0, 0.0, rightEnc, this);
 		rightPID.setAbsoluteTolerance(5.0);
-		leftPID.setInputRange(Double.MIN_VALUE, Double.MAX_VALUE);
+		rightPID.setInputRange(Double.MIN_VALUE, Double.MAX_VALUE);
 		rightPID.setOutputRange(-1.0, 1.0);
 		rightPID.setContinuous(false);
 		rightPID.enable();
 		
 		gyroPID = new PIDController(0.015, 0.0, 0.0, navX, this);
+		gyroPID.setAbsoluteTolerance(1.0);
+		gyroPID.setInputRange(-360.0, 360.0);
+		gyroPID.setOutputRange(-1.0, 1.0);
+		gyroPID.setContinuous(false);
+		gyroPID.enable();
+		
 		
 	}
+    
+    public PIDController getGyroPID() {
+    	return gyroPID;
+    }
     
     public void resetEncoders() {
     	leftEnc.reset();
@@ -136,7 +146,24 @@ public class Drivetrain extends Subsystem implements PIDOutput{
 	}
     
     public void turnToAngle(double angle, double speed) {
+    	navX.reset();
     	gyroPID.setSetpoint(angle);
+
+    	leftPID.setOutputRange(-speed, speed);
+    	rightPID.setOutputRange(-speed, speed);
+    	
+    }
+    
+    public void moveToAngle() {
+    	double angle = gyroPID.getSetpoint();
+    	if(angle > 0) {
+    		leftPID.setSetpoint(leftPID.getSetpoint() + 10);
+    		rightPID.setSetpoint(rightPID.getSetpoint() - 10);
+    	}
+    	else {
+    		leftPID.setSetpoint(leftPID.getSetpoint() - 10);
+    		rightPID.setSetpoint(rightPID.getSetpoint() + 10);
+    	}
     }
     
     

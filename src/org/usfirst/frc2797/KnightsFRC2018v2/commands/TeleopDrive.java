@@ -54,13 +54,13 @@ public class TeleopDrive extends Command {
     protected void execute() {
     	Robot.drivetrain.driveRobot(Robot.oi.xbox1.getRawAxis(1), Robot.oi.xbox1.getRawAxis(5));
     	Robot.elevator.moveElevator(Robot.oi.xbox1.getRawAxis(3) - Robot.oi.xbox1.getRawAxis(2));
-    	Robot.oi.aButton.whenPressed(new FlipClaw());
-    	Robot.oi.rBumperButton.whenPressed(new CloseClaw());
-    	Robot.oi.lBumperButton.whenPressed(new OpenClaw());
-    	Robot.oi.bButton.whenPressed(new ShiftPto());
-    	Robot.oi.yButton.whenPressed(new toggleElevatorLock());
-    	Robot.oi.rStickButton.whenActive(new ClawIntakeIn());
-    	Robot.oi.lStickButton.whenActive(new ClawIntakeOut());
+    	//Robot.oi.aButton.whenPressed(new FlipClaw());
+    	//Robot.oi.rBumperButton.whenPressed(new CloseClaw());
+    	//Robot.oi.lBumperButton.whenPressed(new OpenClaw());
+    	//Robot.oi.bButton.whenPressed(new ShiftPto());
+    	//Robot.oi.yButton.whenPressed(new ToggleElevatorLock());
+    	//Robot.oi.rStickButton.whenActive(new ClawIntakeIn());
+    	//Robot.oi.lStickButton.whenActive(new ClawIntakeOut());
     	
     }
 

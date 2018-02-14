@@ -104,13 +104,12 @@ public class Elevator extends PIDSubsystem {
     }
     
     public void moveElevator(double speed) {
-    	/*if(speed > 0.0 && topLimit.get())
+    	if(speed > 0.0 && topLimit.get())
     		return;
     	else if(speed < 0.0 && bottomLimit.get())
     		return;
     	else
-    		*/
-    		pto.set(speed);
+    		pto.set(-speed);
     }
     
     public void moveElevator(double speed, double distance) {
@@ -124,6 +123,10 @@ public class Elevator extends PIDSubsystem {
     
     public boolean atTop() {
     	return topLimit.get();
+    }
+    
+    public boolean atBottom() {
+    	return bottomLimit.get();
     }
     
     public void resetEncoders() {
@@ -148,5 +151,15 @@ public class Elevator extends PIDSubsystem {
     
     public void toggleElevatorLock() {
     	ptoLock.set(!ptoLock.get());
+    }
+    
+    public void goToTop() {
+    	while(!atTop()) 
+    		pto.set(0.5);
+    }
+    
+    public void goToBottom() {
+    	while(!atBottom())
+    		pto.set(-0.5);
     }
 }
