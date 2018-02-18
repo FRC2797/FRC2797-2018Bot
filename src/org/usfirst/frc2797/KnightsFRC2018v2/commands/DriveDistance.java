@@ -19,7 +19,7 @@ public class DriveDistance extends Command{
 	}
 	
 	protected void initialize() {
-		Robot.drivetrain.enablePID();
+		//Robot.drivetrain.enablePID();
 	}
 	protected void execute() {
 		Robot.drivetrain.driveDistance(dist, speed);

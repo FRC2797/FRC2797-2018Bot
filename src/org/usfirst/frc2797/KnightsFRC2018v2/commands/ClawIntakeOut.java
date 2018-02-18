@@ -9,16 +9,25 @@ public class ClawIntakeOut extends Command {
 	private boolean done;
 	
 	public ClawIntakeOut() {
-		done = false;
+		this.done = false;
+	}
+	
+	protected void initialize() {
+		
 	}
 	
 	protected void execute() {
-		Robot.claw.driveIntake(-1.0);
-		done = !Robot.oi.lStickButton.get();
+		Robot.claw.driveIntake(-0.5);
+		done = true;
 	}
 	
 	protected boolean isFinished() {
 		Robot.claw.driveIntake(0.0);
 		return done;
+	}
+	
+
+	protected void interrupted() {
+		Robot.claw.driveIntake(0.0);
 	}
 }

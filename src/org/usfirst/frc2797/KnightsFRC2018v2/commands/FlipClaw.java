@@ -6,23 +6,27 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class FlipClaw extends Command {
 	private boolean done;
-	
+
 	public FlipClaw() {
-		done = false;
+//		
+//		System.out.println("Flipped Claw Started");
+
 	}
-	
-	
+
 	protected void initialize() {
-		
+		System.out.println("Flipped Claw Init");
 	}
-	
+
 	protected void execute() {
 		Robot.claw.toggleLiftArm();
-		done = true;
 	}
-	
+
 	public boolean isFinished() {
 		System.out.println("Flipped Claw");
-		return done;
+		return true;
+	}
+	
+	protected void end() {
+		
 	}
 }

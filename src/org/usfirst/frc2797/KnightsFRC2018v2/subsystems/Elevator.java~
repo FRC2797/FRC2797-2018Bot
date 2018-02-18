@@ -136,11 +136,11 @@ public class Elevator extends PIDSubsystem {
     }
     
     public void shiftPTO() {
-    	ptoShifter.set(!getPtoState());
+    	shifter.set(!getPtoState());
     }
     
     public boolean getPtoState() {
-    	return ptoShifter.get();
+    	return shifter.get();
     }
     
     public void lockElevator() {

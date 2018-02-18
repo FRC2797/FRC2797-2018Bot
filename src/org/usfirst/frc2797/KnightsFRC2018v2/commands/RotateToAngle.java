@@ -22,7 +22,7 @@ public class RotateToAngle extends Command {
 		
 		do {
 			Robot.drivetrain.moveToAngle();
-			atTarget = Robot.drivetrain.getGyroPID().onTarget();
+			atTarget = true;//Robot.drivetrain.getGyroPID().onTarget();
 		}while(!atTarget);
 		done = true;
 	}

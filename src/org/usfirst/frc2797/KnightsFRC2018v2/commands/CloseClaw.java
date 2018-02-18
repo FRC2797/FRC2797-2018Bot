@@ -14,11 +14,11 @@ public class CloseClaw extends Command {
 	
 	protected void execute() {
 		Robot.claw.closeClaw();
-		done = true;
+		//done = true;
 	}
 	
 	protected boolean isFinished() {
 		System.out.println("Closed Claw");
-		return done;
+		return true;
 	}
 }

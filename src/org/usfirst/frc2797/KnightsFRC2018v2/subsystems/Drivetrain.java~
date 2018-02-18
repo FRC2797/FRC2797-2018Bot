@@ -77,15 +77,15 @@ public class Drivetrain extends Subsystem implements PIDOutput{
     // here. Call these from Commands.
 
     public Drivetrain() {
-		leftPID = new PIDController(1.0, 0.0, 0.0, 0.0, leftEnc, this);
-		leftPID.setAbsoluteTolerance(.2);
+		leftPID = new PIDController(0.015, 0.0, 0.0, 0.0, leftEnc, this);
+		leftPID.setAbsoluteTolerance(5.0);
 		leftPID.setInputRange(Double.MIN_VALUE, Double.MAX_VALUE);
 		leftPID.setOutputRange(-1.0, 1.0);
 		leftPID.setContinuous(false);
 		leftPID.enable();
 		
-		rightPID = new PIDController(1.0, 0.0, 0.0, 0.0, rightEnc, this);
-		rightPID.setAbsoluteTolerance(.2);
+		rightPID = new PIDController(0.015, 0.0, 0.0, 0.0, rightEnc, this);
+		rightPID.setAbsoluteTolerance(5.0);
 		rightPID.setInputRange(Double.MIN_VALUE, Double.MAX_VALUE);
 		rightPID.setOutputRange(-1.0, 1.0);
 		rightPID.setContinuous(false);
@@ -180,11 +180,11 @@ public class Drivetrain extends Subsystem implements PIDOutput{
 	}
     
     public void pidWrite(double output) {
-    	//pidWrite(leftPID.get(), rightPID.get());
+    	pidWrite(leftPID.get(), rightPID.get());
     }
     
     public void pidWrite(double outputL, double outputR) {
-		//drive.tankDrive(outputL, outputR);
+		drive.tankDrive(outputL, outputR);
 	}
 }
 
