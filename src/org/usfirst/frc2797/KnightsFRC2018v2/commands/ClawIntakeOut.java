@@ -6,28 +6,35 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class ClawIntakeOut extends Command {
 	
-	private boolean done;
+	
 	
 	public ClawIntakeOut() {
-		this.done = false;
-	}
-	
-	protected void initialize() {
 		
 	}
 	
+	protected void initialize() {
+		//System.out.println("Init Claw Out");
+	}
+	
 	protected void execute() {
+		//System.out.println("Exec Claw Out");
 		Robot.claw.driveIntake(-0.5);
-		done = true;
+		
 	}
 	
 	protected boolean isFinished() {
+		
+		return false;
+	}
+	
+	protected void end() {
+		//System.out.println("End Claw Out");
 		Robot.claw.driveIntake(0.0);
-		return done;
 	}
 	
 
 	protected void interrupted() {
-		Robot.claw.driveIntake(0.0);
+		//System.out.println("Interrupt Claw Out");
+		end();
 	}
 }

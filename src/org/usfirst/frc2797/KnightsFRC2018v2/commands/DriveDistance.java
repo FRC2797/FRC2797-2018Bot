@@ -14,33 +14,34 @@ public class DriveDistance extends Command{
 	public DriveDistance(double dist, double speed) {
 		this.dist = dist;
 		this.speed = speed;
-		this.done = false;
+		//this.done = false;
 		atTarget = false;
 	}
 	
 	protected void initialize() {
-		//Robot.drivetrain.enablePID();
+		Robot.drivetrain.enablePID();
+		Robot.drivetrain.driveDistance(dist, speed);
 	}
 	protected void execute() {
-		Robot.drivetrain.driveDistance(dist, speed);
 		do {
 			atTarget = Robot.drivetrain.getPIDController(true).onTarget();
 		} while (!atTarget);
 		System.out.println("Arrived at target");
-		done = true;
+		//done = true;
 				
 	}
 	
 	protected boolean isFinished() {
-		return done;
+		return true;
 	}
 	
-	protected void isInturrupted() {
+	protected void isInterrupted() {
 		
 	}
 	
 	protected void end() {
 		waitInMilliseconds(100);
+		
 	}
 	
 

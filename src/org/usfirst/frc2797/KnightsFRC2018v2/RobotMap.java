@@ -98,11 +98,11 @@ public class RobotMap {
         drivetrainDrive.setExpiration(0.1);
         drivetrainDrive.setMaxOutput(1.0);
 
-        drivetrainleftEnc = new Encoder(0, 1, false, EncodingType.k2X);
+        drivetrainleftEnc = new Encoder(2, 3, true, EncodingType.k2X);
         LiveWindow.addSensor("Drivetrain", "leftEnc", drivetrainleftEnc);
         drivetrainleftEnc.setDistancePerPulse(1.0);
         drivetrainleftEnc.setPIDSourceType(PIDSourceType.kDisplacement);
-        drivetrainrightEnc = new Encoder(2, 3, false, EncodingType.k2X);
+        drivetrainrightEnc = new Encoder(0, 1, true, EncodingType.k2X);
         LiveWindow.addSensor("Drivetrain", "rightEnc", drivetrainrightEnc);
         drivetrainrightEnc.setDistancePerPulse(1.0);
         drivetrainrightEnc.setPIDSourceType(PIDSourceType.kDisplacement);
@@ -125,10 +125,10 @@ public class RobotMap {
         elevatorpto = new SpeedControllerGroup(elevatorpto1, elevatorpto2  );
         LiveWindow.addActuator("Elevator", "pto", elevatorpto);
         
-        elevatorPtoLock = new Solenoid(0, 1);
+        elevatorPtoLock = new Solenoid(0, 0);
         LiveWindow.addActuator("Elevator", "PtoLock", elevatorPtoLock);
         
-        elevatorPtoShifter = new Solenoid(0, 0);
+        elevatorPtoShifter = new Solenoid(0, 1);
         LiveWindow.addActuator("Elevator", "PtoShifter", elevatorPtoShifter);
         
         clawcompressor = new Compressor(0);

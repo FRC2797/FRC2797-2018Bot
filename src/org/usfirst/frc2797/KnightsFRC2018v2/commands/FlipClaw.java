@@ -15,10 +15,11 @@ public class FlipClaw extends Command {
 
 	protected void initialize() {
 		System.out.println("Flipped Claw Init");
+		Robot.claw.toggleLiftArm();
 	}
 
 	protected void execute() {
-		Robot.claw.toggleLiftArm();
+		
 	}
 
 	public boolean isFinished() {

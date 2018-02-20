@@ -8,7 +8,9 @@ public class ScaleFromRight extends CommandGroup {
 	private String gameData;
 	
 	public ScaleFromRight() {
-		this.gameData = "RLR"; //DriverStation.getInstance().getGameSpecificMessage();
+		this.gameData = DriverStation.getInstance().getGameSpecificMessage();
+		
+		System.out.println(gameData);
 		
 		// Scale Code
 		if(gameData.charAt(1) == 'R')

@@ -7,28 +7,27 @@ import edu.wpi.first.wpilibj.command.Command;
 public class RotateToAngle extends Command {
 	private boolean done, atTarget;
 	private double angle, speed;
-	
+
 	public RotateToAngle(double angle, double speed) {
 		this.angle = angle;
 		this.speed = speed;
 		this.done = false;
 	}
-	
+
 	protected void initialize() {
+		Robot.drivetrain.enablePID();
 		Robot.drivetrain.turnToAngle(angle, speed);
+
 	}
-	
+
 	protected void execute() {
-		
-		do {
-			Robot.drivetrain.moveToAngle();
-			atTarget = true;//Robot.drivetrain.getGyroPID().onTarget();
-		}while(!atTarget);
-		done = true;
+		System.out.println(Robot.drivetrain.getGyroPID().get());
+		Robot.drivetrain.moveToAngle();
+		atTarget = Robot.drivetrain.getGyroPID().onTarget();
 	}
-	
+
 	protected boolean isFinished() {
-		return done;
+		return true;
 	}
 
 }

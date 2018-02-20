@@ -45,7 +45,16 @@ public class TeleopDrive extends Command {
     protected void initialize() {
     	Robot.drivetrain.disablePID();
     	Robot.elevator.getPIDController().disable();
-    	//notifyEnabled();
+    	
+    	Robot.oi.aButton.toggleWhenPressed(new FlipClaw());
+    	Robot.oi.lBumperButton.whenPressed(new OpenClaw());
+    	Robot.oi.rBumperButton.whenPressed(new CloseClaw());
+    	Robot.oi.bButton.whenPressed(new ShiftPto());
+    	Robot.oi.yButton.whenPressed(new ToggleElevatorLock());
+
+    	Robot.oi.rStickButton.whileHeld(new ClawIntakeIn());
+    	Robot.oi.lStickButton.whileHeld(new ClawIntakeOut());
+    	
     	
     	 
     	
@@ -60,27 +69,17 @@ public class TeleopDrive extends Command {
     	// TODO - move this to a method on elevator
     	//UP
 		if(Robot.oi.xbox1.getRawAxis(3)>.1) {
-			Robot.elevator.moveElevator(-Robot.oi.xbox1.getRawAxis(3)*.7);
+			Robot.elevator.moveElevator(-Robot.oi.xbox1.getRawAxis(3)*1.0);
 		}
 		//DOWN
 		if(Robot.oi.xbox1.getRawAxis(2)>.1) {
-			Robot.elevator.moveElevator(Robot.oi.xbox1.getRawAxis(2)*.2);
+			Robot.elevator.moveElevator(Robot.oi.xbox1.getRawAxis(2)*0.5);
 		}
 		//STOP if no trigger pressed
 		if(Robot.oi.xbox1.getRawAxis(2)<=.1 && Robot.oi.xbox1.getRawAxis(3)<=.1) {
 			Robot.elevator.moveElevator(0);
 		}
 
-    	
-		
-		Robot.oi.aButton.toggleWhenPressed(new FlipClaw());
-    	Robot.oi.rBumperButton.whenPressed(new CloseClaw());
-    	Robot.oi.lBumperButton.whenPressed(new OpenClaw());
-    	Robot.oi.bButton.whenPressed(new ShiftPto());
-    	Robot.oi.yButton.whenPressed(new ToggleElevatorLock());
-		
-    	Robot.oi.rStickButton.whileHeld(new ClawIntakeIn());
-    	Robot.oi.lStickButton.whileHeld(new ClawIntakeOut());
     	
     }
 

@@ -6,10 +6,9 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class ClawIntakeIn extends Command {
 	
-	private boolean done;
 	
 	public ClawIntakeIn() {
-		this.done = false;
+		
 	}
 	
 	protected void initialize() {
@@ -19,15 +18,17 @@ public class ClawIntakeIn extends Command {
 	protected void execute() {
 		Robot.claw.driveIntake(0.5);
 		
-		done = true;
 	}
 	
 	protected boolean isFinished() {
+		
+		return false;
+	}
+	protected void end() {
 		Robot.claw.driveIntake(0.0);
-		return done;
 	}
 	
 	protected void interrupted() {
-		Robot.claw.driveIntake(0.0);
+		end();
 	}
 }
