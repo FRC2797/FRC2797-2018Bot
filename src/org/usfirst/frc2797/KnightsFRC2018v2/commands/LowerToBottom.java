@@ -6,19 +6,19 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class LowerToBottom extends Command {
 	private boolean done;
-	
+
 	public LowerToBottom() {
 		this.done = false;
 	}
-	
+
 	protected void initialize() {
 		Robot.elevator.goToBottom();
 	}
-	
+
 	protected void execute() {
 		done = true;
 	}
-	
+
 	protected boolean isFinished() {
 		return done;
 	}

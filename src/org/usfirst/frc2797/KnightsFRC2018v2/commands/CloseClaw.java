@@ -6,19 +6,15 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class CloseClaw extends Command {
 
-	private boolean done;
-	
 	public CloseClaw() {
-		done = false;
 	}
-	
+
 	protected void execute() {
 		Robot.claw.closeClaw();
-		//done = true;
 	}
-	
+
 	protected boolean isFinished() {
-		System.out.println("Closed Claw");
+		// System.out.println("Closed Claw");
 		return true;
 	}
 }
